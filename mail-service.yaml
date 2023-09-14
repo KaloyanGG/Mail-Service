@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mail-service
+  labels:
+    app: mail-service
+spec:
+  selector:
+    matchLabels:
+      app: mail-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mail-service
+    spec:
+      containers:
+        - name: app
+          image: koko120/mail-service:latest
+          imagePullPolicy: Always
+          env:
+            - name: CRED_USERNAME
+              value: "sb-880ced21-fbdb-4399-943e-606f22b6c0bd!b188244|it-rt-koko-subaccount!b26655"
+            - name: CRED_PASSWORD
+              value: "c302acf8-acad-41d0-a6e6-91c96e590c6d$1MVofYyZ8MjQ2QDDO2FOyW_TRBUMdHZhm3sZ5TtS9tQ="
